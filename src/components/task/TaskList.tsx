@@ -22,5 +22,4 @@ const TaskList: React.FC<TaskListInput> = (props) =>{
     )
 }
 
-
 export default TaskList

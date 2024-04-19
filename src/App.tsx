@@ -1,26 +1,17 @@
-import { useEffect, useState } from 'react'
-import TaskForm from './components/TaskForm'
-import TaskList from './components/TaskList'
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
-
-interface Task {
-  id: number
-  title: string
-  description: string
-  completed: boolean
-}
+import TaskHome from './components/task/TaskHome'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
 
 function App() {
-  const [todoList, setTodoList] = useState<Task[]>(JSON.parse(localStorage.getItem("todoList") || '[]'))
-
-  useEffect(() => {
-    localStorage.setItem('todoList', JSON.stringify(todoList))
-  }, [todoList])
-
   return (
     <>
-      <TaskForm todoList={todoList} setTodoList={setTodoList} />
-      <TaskList todoList={todoList} setTodoList={setTodoList} />
+      <Routes>
+        <Route path='/' element={<TaskHome />} />
+        <Route path='login' element={<Login />} />
+        <Route path='register' element={<Register />} />
+      </Routes>
     </>
   )
 }
